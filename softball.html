@@ -5,10 +5,25 @@
 <body>
   <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
+  {{> lineup}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="field">
+</template>
+
+<template name="lineup">
+  <form class="new-player">
+    <input type="text" name="text" placeholder="New Player Name" />
+  </form>
+  <ol>
+    {{#sortable items=players sortField="bat"}}
+      {{> player}}
+    {{/sortable}}
+  </ol>
+</template>
+
+<template name="player">
+  <li>
+    {{name}} - {{pos}} - {{bat}}<button class="delete">&times;</button>
+  </li>
 </template>
